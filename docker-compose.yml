@@ -17,14 +17,25 @@ services:
       - POSTGRES_DB=demodatabase
     image: postgres
 
+  sqlserver:
+    ports:
+      - '1433:1433'
+    volumes:
+      - sql1data:/var/opt/mssql
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=demo01!password
+      - MSSQL_PID=Developer
+    image: microsoft/mssql-server-linux
+
   web:
     hostname: localhost
     build:
       context: .
       dockerfile: Dockerfile
     environment:
-      - 'DATABASETYPE=Postgresql'
-      - 'CONNECTIONSTRING=Server=postgres;User ID=demouser;Database=demodatabase;Password=demopassword'
+      - 'DATABASETYPE=SqlServer'
+      - 'CONNECTIONSTRING=Serversqlserver;User ID=sa;Database=demodatabase;Password=demo01!password'
       - 'SERILOG__WRITETO__0__NAME=LiterateConsole'
       - 'SERILOG__WRITETO__1__NAME=Seq'
       - 'SERILOG__WRITETO__1__ARGS__SERVERURL=http://seq:5341'
@@ -33,3 +44,6 @@ services:
       - 'seq:seq'
     ports:
       - '5000:80'
+
+volumes:
+  sql1data:

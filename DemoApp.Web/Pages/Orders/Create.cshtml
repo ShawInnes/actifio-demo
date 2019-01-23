@@ -1,0 +1,93 @@
+@page
+@model DemoApp.Web.Pages.Orders.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Orders</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Orders.CustomerId" class="control-label"></label>
+                <select asp-for="Orders.CustomerId" class ="form-control" asp-items="ViewBag.CustomerId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Orders.SalespersonPersonId" class="control-label"></label>
+                <select asp-for="Orders.SalespersonPersonId" class ="form-control" asp-items="ViewBag.SalespersonPersonId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Orders.PickedByPersonId" class="control-label"></label>
+                <select asp-for="Orders.PickedByPersonId" class ="form-control" asp-items="ViewBag.PickedByPersonId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Orders.ContactPersonId" class="control-label"></label>
+                <select asp-for="Orders.ContactPersonId" class ="form-control" asp-items="ViewBag.ContactPersonId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Orders.BackorderOrderId" class="control-label"></label>
+                <select asp-for="Orders.BackorderOrderId" class ="form-control" asp-items="ViewBag.BackorderOrderId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Orders.OrderDate" class="control-label"></label>
+                <input asp-for="Orders.OrderDate" class="form-control" />
+                <span asp-validation-for="Orders.OrderDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Orders.ExpectedDeliveryDate" class="control-label"></label>
+                <input asp-for="Orders.ExpectedDeliveryDate" class="form-control" />
+                <span asp-validation-for="Orders.ExpectedDeliveryDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Orders.CustomerPurchaseOrderNumber" class="control-label"></label>
+                <input asp-for="Orders.CustomerPurchaseOrderNumber" class="form-control" />
+                <span asp-validation-for="Orders.CustomerPurchaseOrderNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Orders.IsUndersupplyBackordered" /> @Html.DisplayNameFor(model => model.Orders.IsUndersupplyBackordered))
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Orders.Comments" class="control-label"></label>
+                <input asp-for="Orders.Comments" class="form-control" />
+                <span asp-validation-for="Orders.Comments" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Orders.DeliveryInstructions" class="control-label"></label>
+                <input asp-for="Orders.DeliveryInstructions" class="form-control" />
+                <span asp-validation-for="Orders.DeliveryInstructions" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Orders.InternalComments" class="control-label"></label>
+                <input asp-for="Orders.InternalComments" class="form-control" />
+                <span asp-validation-for="Orders.InternalComments" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Orders.PickingCompletedWhen" class="control-label"></label>
+                <input asp-for="Orders.PickingCompletedWhen" class="form-control" />
+                <span asp-validation-for="Orders.PickingCompletedWhen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Orders.LastEditedBy" class="control-label"></label>
+                <select asp-for="Orders.LastEditedBy" class ="form-control" asp-items="ViewBag.LastEditedBy"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

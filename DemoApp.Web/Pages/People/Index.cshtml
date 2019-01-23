@@ -1,0 +1,150 @@
+@page
+@model DemoApp.Web.Pages.People.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.People[0].FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.People[0].PreferredName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.People[0].SearchName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.People[0].IsPermittedToLogon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.People[0].LogonName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.People[0].IsExternalLogonProvider)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.People[0].HashedPassword)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.People[0].IsSystemUser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.People[0].IsEmployee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.People[0].IsSalesperson)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.People[0].UserPreferences)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.People[0].PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.People[0].FaxNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.People[0].EmailAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.People[0].Photo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.People[0].CustomFields)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.People[0].OtherLanguages)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.People[0].ValidFrom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.People[0].ValidTo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.People[0].LastEditedByNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.People) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PreferredName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SearchName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsPermittedToLogon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LogonName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsExternalLogonProvider)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HashedPassword)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsSystemUser)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsEmployee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsSalesperson)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserPreferences)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FaxNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Photo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomFields)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OtherLanguages)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValidFrom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValidTo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastEditedByNavigation.FullName)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.PersonId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.PersonId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.PersonId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
