@@ -17,7 +17,13 @@ namespace DemoApp.Web
   {
     public static void Main(string[] args)
     {
-      var host = CreateWebHostBuilder(args).Build();
+      var host = new WebHostBuilder()
+          .UseKestrel()
+          .UseContentRoot(System.IO.Directory.GetCurrentDirectory())
+          .UseIISIntegration()
+          .UseSerilog()
+          .UseStartup<Startup>()
+          .Build();
 
       using (var scope = host.Services.CreateScope())
       {
@@ -36,10 +42,5 @@ namespace DemoApp.Web
 
       host.Run();
     }
-
-    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-        WebHost.CreateDefaultBuilder(args)
-              .UseSerilog()
-              .UseStartup<Startup>();
   }
 }
