@@ -13,10 +13,12 @@ using DemoApp.Web.Data;
 
 namespace DemoApp.Web
 {
-  public class Program
+  public partial class Program
   {
     public static void Main(string[] args)
     {
+      CurrentDirectoryHelpers.SetCurrentDirectory();
+
       var host = new WebHostBuilder()
           .UseKestrel()
           .UseContentRoot(System.IO.Directory.GetCurrentDirectory())
